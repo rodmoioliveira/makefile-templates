@@ -1,0 +1,83 @@
+#!make
+
+rs-audit: ## Audit dependencies
+	@cargo audit
+
+rs-audit-fix: ## Fix vulnerable dependencies requirements
+	@cargo audit fix
+
+rs-bin-deps: ## Install cargo dependencies
+	@cargo install --locked cargo-outdated
+	@cargo install cargo-audit --features=fix
+	@cargo install cargo-udeps --locked
+	@cargo install cargo-watch
+	@cargo install eza
+	@cargo install bat
+	@cargo install ripgrep
+	@cargo install sd
+	@cargo install typos-cli
+	@rustup component add clippy
+
+rs-build: ## Build binary
+	@cargo build --release --locked --frozen --bins
+
+rs-check: ## Check rust code
+	@cargo check
+
+rs-dev: ## Check rust code in watch mode
+	@cargo watch -c
+
+rs-doc: ## Open app documentation
+	@cargo doc --open
+
+rs-fix: ## Fix rust code
+	@cargo fix --allow-dirty --allow-staged --all-features --all-targets
+
+rs-fmt: ## Check format of rust code
+	@cargo fmt --all --check
+
+rs-fmt-fix: ## Format rust code
+	@cargo fmt --all
+
+rs-install: ## Install binary
+	@cargo install --path .
+
+rs-lint: ## Lint rust code
+	@cargo clippy --workspace --all-targets --all-features --no-deps -- -D warnings
+
+rs-lint-fix: ## Fix linting issues in rust code
+	@cargo clippy --workspace --all-targets --all-features --no-deps --allow-dirty --allow-staged --fix -- -D warnings
+
+rs-outdated: ## Display when dependencies are out of date
+	@cargo outdated -wR
+
+rs-tests: ## Run tests
+	@cargo test --lib
+
+rs-uninstall: ## Uninstall binary
+	@cargo uninstall
+
+rs-update: ## Update dependencies
+	@cargo update
+
+rs-update-rustup: ## Update rustup
+	@rustup update
+
+.PHONY: rs-audit
+.PHONY: rs-audit-fix
+.PHONY: rs-bin-deps
+.PHONY: rs-build
+.PHONY: rs-check
+.PHONY: rs-dev
+.PHONY: rs-doc
+.PHONY: rs-fix
+.PHONY: rs-fmt
+.PHONY: rs-fmt-fix
+.PHONY: rs-install
+.PHONY: rs-lint
+.PHONY: rs-lint-fix
+.PHONY: rs-outdated
+.PHONY: rs-tests
+.PHONY: rs-uninstall
+.PHONY: rs-update
+.PHONY: rs-update-rustup

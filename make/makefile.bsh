@@ -1,0 +1,17 @@
+#!make
+
+bash-all: bash-fmt bash-check bash-lint ## Run all bash tests
+
+bash-check: ## Check bash code
+	@find . -type f -name "*.sh" | xargs shfmt -i 2 -d
+
+bash-fmt: ## Format bash code
+	@find . -type f -name "*.sh" | xargs shfmt -i 2 -w
+
+bash-lint: ## Lint bash code
+	@find . -type f -name "*.sh" | xargs shellcheck -o all
+
+.PHONY: bash-all
+.PHONY: bash-check
+.PHONY: bash-fmt
+.PHONY: bash-lint
