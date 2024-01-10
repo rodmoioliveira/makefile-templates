@@ -1,3 +1,7 @@
 # Useless cat. Consider cmd < file | .. or cmd file | .. instead.
 # https://github.com/koalaman/shellcheck/wiki/SC2002
 disable=SC2002
+
+# Consider invoking this command separately to avoid masking its return value (or use '|| true' to ignore)
+# https://github.com/koalaman/shellcheck/wiki/SC2312
+disable=SC2312
