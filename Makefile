@@ -1,5 +1,43 @@
 #!make
 
+help: ## Display this help screen
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
+		awk 'BEGIN {FS = ":.*?## "}; \
+		{printf "%-25s %s\n", $$1, $$2}' | \
+		sort
+
+check-links: ## Check if links are not dead
+	@./dev/check-links.sh
+
+doc-changelog: ## Autogenerate CHANGELOG.md
+	@git-cliff --config cliff.toml --output CHANGELOG.md
+
+doc-readme: ## Write README.md
+	@./dev/doc-readme.sh
+
+bash-all: bash-fmt bash-check bash-lint ## Run all bash tests
+
+bash-check: ## Check bash code
+	@find . -type f -name "*.sh" | xargs shfmt -i 2 -d
+
+bash-fmt: ## Format bash code
+	@find . -type f -name "*.sh" | xargs shfmt -i 2 -w
+
+bash-lint: ## Lint bash code
+	@find . -type f -name "*.sh" | xargs shellcheck -o all
+
+js-fmt: ## Format javascript code
+	@biome format .
+
+js-fmt-fix: ## Format fix javascript code
+	@biome format --write .
+
+js-lint: ## Lint javascript code
+	@biome lint .
+
+js-lint-fix: ## Fix lint javascript code
+	@biome lint --apply .
+
 rs-audit: ## Audit dependencies
 	@cargo audit
 
@@ -63,6 +101,24 @@ rs-update: ## Update dependencies
 rs-update-rustup: ## Update rustup
 	@rustup update
 
+typos: ## Check typos
+	@typos
+
+typos-fix: ## Fix typos
+	@typos -w
+
+.PHONY: help
+.PHONY: bash-all
+.PHONY: bash-check
+.PHONY: bash-fmt
+.PHONY: bash-lint
+.PHONY: check-links
+.PHONY: doc-changelog
+.PHONY: doc-readme
+.PHONY: js-fmt
+.PHONY: js-fmt-fix
+.PHONY: js-lint
+.PHONY: js-lint-fix
 .PHONY: rs-audit
 .PHONY: rs-audit-fix
 .PHONY: rs-bin-deps
@@ -81,3 +137,5 @@ rs-update-rustup: ## Update rustup
 .PHONY: rs-uninstall
 .PHONY: rs-update
 .PHONY: rs-update-rustup
+.PHONY: typos
+.PHONY: typos-fix
