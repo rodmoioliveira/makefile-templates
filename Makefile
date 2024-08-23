@@ -27,16 +27,16 @@ bash-lint: ## Lint bash code
 	@find . -type f -name "*.sh" | xargs shellcheck -o all
 
 js-fmt: ## Format javascript code
-	@biome format .
+	@npx @biomejs/biome format .
 
 js-fmt-fix: ## Format fix javascript code
-	@biome format --write .
+	@npx @biomejs/biome format --write .
 
 js-lint: ## Lint javascript code
-	@biome lint .
+	@npx @biomejs/biome lint .
 
 js-lint-fix: ## Fix lint javascript code
-	@biome lint --apply .
+	@npx @biomejs/biome lint --apply .
 
 rs-audit: ## Audit dependencies
 	@cargo audit
