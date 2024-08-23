@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.1](https://github.com/rodmoioliveira/makefile-templates/compare/0.3.0...0.3.1) - 2024-08-23
+
+[c3a8d2b](https://github.com/rodmoioliveira/makefile-templates/commit/c3a8d2bb6f7364d06553e56ffc7744ce9b54400d)...[3048199](https://github.com/rodmoioliveira/makefile-templates/commit/3048199c33f8b748b8eb4ce0fac4637bd3dd210c)
+
+### Bug Fixes
+
+- [3048199](https://github.com/rodmoioliveira/makefile-templates/commit/3048199c33f8b748b8eb4ce0fac4637bd3dd210c) - Fix js recipes in Makefile
+
 ## [0.3.0](https://github.com/rodmoioliveira/makefile-templates/compare/0.2.0...0.3.0) - 2024-08-23
 
 [74d0524](https://github.com/rodmoioliveira/makefile-templates/commit/74d0524cbf8607f4662208e887676ae00ea2c431)...[c3a8d2b](https://github.com/rodmoioliveira/makefile-templates/commit/c3a8d2bb6f7364d06553e56ffc7744ce9b54400d)
