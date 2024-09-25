@@ -38,6 +38,21 @@ js-lint: ## Lint javascript code
 js-lint-fix: ## Fix lint javascript code
 	@npx @biomejs/biome lint --apply .
 
+py-dev: ## Check python code in watch mode
+	@ruff check --watch
+
+py-fmt: ## Format python code
+	@ruff format --check --diff --verbose
+
+py-fmt-fix: ## Format fix python code
+	@ruff format
+
+py-lint: ## Lint python code
+	@ruff check --show-fixes --verbose
+
+py-lint-fix: ## Fix lint python code
+	@ruff check --fix
+
 rs-audit: ## Audit dependencies
 	@cargo audit
 
@@ -119,6 +134,11 @@ typos-fix: ## Fix typos
 .PHONY: js-fmt-fix
 .PHONY: js-lint
 .PHONY: js-lint-fix
+.PHONY: py-dev
+.PHONY: py-fmt
+.PHONY: py-fmt-fix
+.PHONY: py-lint
+.PHONY: py-lint-fix
 .PHONY: rs-audit
 .PHONY: rs-audit-fix
 .PHONY: rs-bin-deps
