@@ -11,6 +11,13 @@ readme() {
   cat <<EOF >|README.md
 # makefile-templates
 
+## Dependencies
+
+- [biome](https://biomejs.dev/)
+- [ruff](https://docs.astral.sh/ruff/)
+
+## Make Recipes
+
 \`\`\`
 $(make help)
 \`\`\`

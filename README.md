@@ -1,5 +1,12 @@
 # makefile-templates
 
+## Dependencies
+
+- [biome](https://biomejs.dev/)
+- [ruff](https://docs.astral.sh/ruff/)
+
+## Make Recipes
+
 ```
 bash-all                  Run all bash tests
 bash-check                Check bash code
@@ -13,6 +20,11 @@ js-fmt-fix                Format fix javascript code
 js-fmt                    Format javascript code
 js-lint-fix               Fix lint javascript code
 js-lint                   Lint javascript code
+py-dev                    Check python code in watch mode
+py-fmt-fix                Format fix python code
+py-fmt                    Format python code
+py-lint-fix               Fix lint python code
+py-lint                   Lint python code
 rs-audit                  Audit dependencies
 rs-audit-fix              Fix vulnerable dependencies requirements
 rs-bin-deps               Install cargo dependencies
