@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.3.2](https://github.com/rodmoioliveira/makefile-templates/compare/0.3.1...0.3.2) - 2024-09-25
+
+[3048199](https://github.com/rodmoioliveira/makefile-templates/commit/3048199c33f8b748b8eb4ce0fac4637bd3dd210c)...[b8c3537](https://github.com/rodmoioliveira/makefile-templates/commit/b8c3537fa84235bcf6465e9446969922d2fee009)
+
+### Documentation
+
+- [b8c3537](https://github.com/rodmoioliveira/makefile-templates/commit/b8c3537fa84235bcf6465e9446969922d2fee009) - Update README
+
+### Features
+
+- [e48d14f](https://github.com/rodmoioliveira/makefile-templates/commit/e48d14f23c8c3ccf8768644a991ea6f55bd3ba47) - Add python recipes
+
 ## [0.3.1](https://github.com/rodmoioliveira/makefile-templates/compare/0.3.0...0.3.1) - 2024-08-23
 
 [c3a8d2b](https://github.com/rodmoioliveira/makefile-templates/commit/c3a8d2bb6f7364d06553e56ffc7744ce9b54400d)...[3048199](https://github.com/rodmoioliveira/makefile-templates/commit/3048199c33f8b748b8eb4ce0fac4637bd3dd210c)
