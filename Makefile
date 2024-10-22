@@ -6,15 +6,6 @@ help: ## Display this help screen
 		{printf "%-25s %s\n", $$1, $$2}' | \
 		sort
 
-check-links: ## Check if links are not dead
-	@./dev/check-links.sh
-
-doc-changelog: ## Autogenerate CHANGELOG.md
-	@git-cliff --config cliff.toml --output CHANGELOG.md
-
-doc-readme: ## Write README.md
-	@./dev/doc-readme.sh
-
 bash-all: bash-fmt bash-check bash-lint ## Run all bash tests
 
 bash-check: ## Check bash code
@@ -25,6 +16,15 @@ bash-fmt: ## Format bash code
 
 bash-lint: ## Lint bash code
 	@find . -type f -name "*.sh" | xargs shellcheck -o all
+
+check-links: ## Check if links are not dead
+	@./dev/check-links.sh
+
+doc-changelog: ## Autogenerate CHANGELOG.md
+	@git-cliff --config cliff.toml --output CHANGELOG.md
+
+doc-readme: ## Write README.md
+	@./dev/doc-readme.sh
 
 js-fmt: ## Format javascript code
 	@npx @biomejs/biome format .
@@ -122,6 +122,12 @@ typos: ## Check typos
 typos-fix: ## Fix typos
 	@typos -w
 
+yaml-fmt: ## Format yaml code
+	@find . -type f -regex ".*.ya?ml" | xargs yamlfmt
+
+yaml-lint: ## Check lint yaml code
+	@find . -type f -regex ".*.ya?ml" | xargs yamllint
+
 .PHONY: help
 .PHONY: bash-all
 .PHONY: bash-check
@@ -159,3 +165,5 @@ typos-fix: ## Fix typos
 .PHONY: rs-update-rustup
 .PHONY: typos
 .PHONY: typos-fix
+.PHONY: yaml-fmt
+.PHONY: yaml-lint
