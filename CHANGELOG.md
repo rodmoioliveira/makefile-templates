@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.4.0](https://github.com/rodmoioliveira/makefile-templates/compare/0.3.2...0.4.0) - 2024-10-22
+
+[b8c3537](https://github.com/rodmoioliveira/makefile-templates/commit/b8c3537fa84235bcf6465e9446969922d2fee009)...[c481380](https://github.com/rodmoioliveira/makefile-templates/commit/c481380cdaa12292fbcfb668b18a6500b9b86d7a)
+
+### Documentation
+
+- [c481380](https://github.com/rodmoioliveira/makefile-templates/commit/c481380cdaa12292fbcfb668b18a6500b9b86d7a) - Add index to README.md
+
+### Features
+
+- [7ad3096](https://github.com/rodmoioliveira/makefile-templates/commit/7ad3096d8227bd658ac3859087f0f8b9886f1f33) - Add yaml recipes
+
 ## [0.3.2](https://github.com/rodmoioliveira/makefile-templates/compare/0.3.1...0.3.2) - 2024-09-25
 
 [3048199](https://github.com/rodmoioliveira/makefile-templates/commit/3048199c33f8b748b8eb4ce0fac4637bd3dd210c)...[b8c3537](https://github.com/rodmoioliveira/makefile-templates/commit/b8c3537fa84235bcf6465e9446969922d2fee009)
