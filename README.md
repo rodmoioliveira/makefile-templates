@@ -1,11 +1,24 @@
 # makefile-templates
 
-## Dependencies
+A collection of my commonly used makefile recipes.
+
+# index
+
+  - [Dependencies](#dependencies)
+  - [Make Recipes](#make-recipes)
+
+# Dependencies
+
+[back^](#index)
 
 - [biome](https://biomejs.dev/)
 - [ruff](https://docs.astral.sh/ruff/)
+- [yamlfmt](https://github.com/google/yamlfmt)
+- [yamllint](https://github.com/adrienverge/yamllint)
 
-## Make Recipes
+# Make Recipes
+
+[back^](#index)
 
 ```
 bash-all                  Run all bash tests
@@ -45,4 +58,6 @@ rs-update-rustup          Update rustup
 rs-update                 Update dependencies
 typos                     Check typos
 typos-fix                 Fix typos
+yaml-fmt                  Format yaml code
+yaml-lint                 Check lint yaml code
 ```
