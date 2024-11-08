@@ -116,6 +116,12 @@ rs-update: ## Update dependencies
 rs-update-rustup: ## Update rustup
 	@rustup update
 
+toml-fmt: ## Format toml code
+	@find . -type f -regex ".*.toml" | xargs taplo format
+
+toml-lint: ## Check toml yaml code
+	@find . -type f -regex ".*.toml" | xargs taplo lint
+
 typos: ## Check typos
 	@typos
 
@@ -163,6 +169,8 @@ yaml-lint: ## Check lint yaml code
 .PHONY: rs-uninstall
 .PHONY: rs-update
 .PHONY: rs-update-rustup
+.PHONY: toml-fmt
+.PHONY: toml-lint
 .PHONY: typos
 .PHONY: typos-fix
 .PHONY: yaml-fmt

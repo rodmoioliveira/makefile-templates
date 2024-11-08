@@ -50,6 +50,7 @@ $(index)
 
 - [biome](https://biomejs.dev/)
 - [ruff](https://docs.astral.sh/ruff/)
+- [taplo](https://github.com/tamasfe/taplo)
 - [yamlfmt](https://github.com/google/yamlfmt)
 - [yamllint](https://github.com/adrienverge/yamllint)
 

@@ -13,6 +13,7 @@ A collection of my commonly used makefile recipes.
 
 - [biome](https://biomejs.dev/)
 - [ruff](https://docs.astral.sh/ruff/)
+- [taplo](https://github.com/tamasfe/taplo)
 - [yamlfmt](https://github.com/google/yamlfmt)
 - [yamllint](https://github.com/adrienverge/yamllint)
 
@@ -56,6 +57,8 @@ rs-tests                  Run tests
 rs-uninstall              Uninstall binary
 rs-update-rustup          Update rustup
 rs-update                 Update dependencies
+toml-fmt                  Format toml code
+toml-lint                 Check toml yaml code
 typos                     Check typos
 typos-fix                 Fix typos
 yaml-fmt                  Format yaml code
