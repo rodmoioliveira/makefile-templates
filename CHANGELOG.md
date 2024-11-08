@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.5.0](https://github.com/rodmoioliveira/makefile-templates/compare/0.4.0...0.5.0) - 2024-11-08
+
+[c481380](https://github.com/rodmoioliveira/makefile-templates/commit/c481380cdaa12292fbcfb668b18a6500b9b86d7a)...[8d93b1c](https://github.com/rodmoioliveira/makefile-templates/commit/8d93b1cc6848e92e2250234605c9560dcd33be4e)
+
+### Features
+
+- [8d93b1c](https://github.com/rodmoioliveira/makefile-templates/commit/8d93b1cc6848e92e2250234605c9560dcd33be4e) - Add taplo, a TOML formatter
+
+### Miscellaneous Tasks
+
+- [d9fa4e1](https://github.com/rodmoioliveira/makefile-templates/commit/d9fa4e157817828bca73d7e89e888b97df7de537) - Enhance index function
+
 ## [0.4.0](https://github.com/rodmoioliveira/makefile-templates/compare/0.3.2...0.4.0) - 2024-10-22
 
 [b8c3537](https://github.com/rodmoioliveira/makefile-templates/commit/b8c3537fa84235bcf6465e9446969922d2fee009)...[c481380](https://github.com/rodmoioliveira/makefile-templates/commit/c481380cdaa12292fbcfb668b18a6500b9b86d7a)
