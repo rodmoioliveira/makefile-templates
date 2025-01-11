@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.6.0](https://github.com/rodmoioliveira/makefile-templates/compare/0.5.0...0.6.0) - 2025-01-11
+
+[8d93b1c](https://github.com/rodmoioliveira/makefile-templates/commit/8d93b1cc6848e92e2250234605c9560dcd33be4e)...[1b64336](https://github.com/rodmoioliveira/makefile-templates/commit/1b6433673c8bde32d73ce0309e1ed6f8ebc8fba0)
+
+### Bug Fixes
+
+- [33c6eda](https://github.com/rodmoioliveira/makefile-templates/commit/33c6eda12aaeda19ee1682d9f05519a8a9d8a685) - Add LC_ALL=C to sort
+
+### Features
+
+- [1b64336](https://github.com/rodmoioliveira/makefile-templates/commit/1b6433673c8bde32d73ce0309e1ed6f8ebc8fba0) - Add golang recipes
+
 ## [0.5.0](https://github.com/rodmoioliveira/makefile-templates/compare/0.4.0...0.5.0) - 2024-11-08
 
 [c481380](https://github.com/rodmoioliveira/makefile-templates/commit/c481380cdaa12292fbcfb668b18a6500b9b86d7a)...[8d93b1c](https://github.com/rodmoioliveira/makefile-templates/commit/8d93b1cc6848e92e2250234605c9560dcd33be4e)
