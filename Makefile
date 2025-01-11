@@ -11,6 +11,9 @@ bash-all: bash-fmt bash-check bash-lint ## Run all bash tests
 bash-check: ## Check bash code
 	@find . -type f -name "*.sh" | xargs shfmt -i 2 -d
 
+bash-deps: ## Install bash dependencies
+	@sudo apt-get install -y moreutils
+
 bash-fmt: ## Format bash code
 	@find . -type f -name "*.sh" | xargs shfmt -i 2 -w
 
@@ -25,6 +28,37 @@ doc-changelog: ## Autogenerate CHANGELOG.md
 
 doc-readme: ## Write README.md
 	@./dev/doc-readme.sh
+
+go-audit: ## Audit go vulnerabilities
+	@govulncheck ./...
+
+go-build: ## Build go binary
+	@go build
+
+go-deps: ## Install go dependencies
+	@go install github.com/axw/gocov/gocov@latest
+	@go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.63.4
+	@go install github.com/matm/gocov-html/cmd/gocov-html@latest
+	@go install github.com/segmentio/golines@latest
+	@go install golang.org/x/vuln/cmd/govulncheck@latest
+
+go-fmt: ## Format go code
+	@golines -w .
+
+go-lint: ## Lint go code
+	@golangci-lint run -c ./.golangci.yml
+
+go-lint-fix: ## Fix lint go code
+	@golangci-lint run --fix -c ./.golangci.yml
+
+go-outdated: ## Display when go dependencies are out of date
+	@go list -u -m all
+
+go-run: ## Run go app
+	@go run main.go
+
+go-tests: ## Run go tests
+	@go test ./... -v
 
 js-fmt: ## Format javascript code
 	@npx @biomejs/biome format .
@@ -53,10 +87,10 @@ py-lint: ## Lint python code
 py-lint-fix: ## Fix lint python code
 	@ruff check --fix
 
-rs-audit: ## Audit dependencies
+rs-audit: ## Audit rust vulnerabilities
 	@cargo audit
 
-rs-audit-fix: ## Fix vulnerable dependencies requirements
+rs-audit-fix: ## Fix rust vulnerabilities
 	@cargo audit fix
 
 rs-bin-deps: ## Install cargo dependencies
@@ -71,7 +105,7 @@ rs-bin-deps: ## Install cargo dependencies
 	@cargo install typos-cli
 	@rustup component add clippy
 
-rs-build: ## Build binary
+rs-build: ## Build rust binary
 	@cargo build --release --locked --frozen --bins
 
 rs-check: ## Check rust code
@@ -80,7 +114,7 @@ rs-check: ## Check rust code
 rs-dev: ## Check rust code in watch mode
 	@cargo watch -c
 
-rs-doc: ## Open app documentation
+	rs-doc: ## Open rust binary documentation
 	@cargo doc --open
 
 rs-fix: ## Fix rust code
@@ -92,7 +126,7 @@ rs-fmt: ## Check format of rust code
 rs-fmt-fix: ## Format rust code
 	@cargo fmt --all
 
-rs-install: ## Install binary
+rs-install: ## Install rust binary
 	@cargo install --path .
 
 rs-lint: ## Lint rust code
@@ -101,16 +135,16 @@ rs-lint: ## Lint rust code
 rs-lint-fix: ## Fix linting issues in rust code
 	@cargo clippy --workspace --all-targets --all-features --no-deps --allow-dirty --allow-staged --fix -- -D warnings
 
-rs-outdated: ## Display when dependencies are out of date
+rs-outdated: ## Display when rust dependencies are out of date
 	@cargo outdated -wR
 
-rs-tests: ## Run tests
+rs-tests: ## Run rust tests
 	@cargo test --lib
 
-rs-uninstall: ## Uninstall binary
+rs-uninstall: ## Uninstall rust binary
 	@cargo uninstall
 
-rs-update: ## Update dependencies
+rs-update: ## Update rust dependencies
 	@cargo update
 
 rs-update-rustup: ## Update rustup
@@ -137,6 +171,7 @@ yaml-lint: ## Check lint yaml code
 .PHONY: help
 .PHONY: bash-all
 .PHONY: bash-check
+.PHONY: bash-deps
 .PHONY: bash-fmt
 .PHONY: bash-lint
 .PHONY: check-links
