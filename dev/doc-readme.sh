@@ -28,8 +28,7 @@ index() {
         sed -E 's/"//g' |
         sed 's/[A-Z]/\L&/g' |
         sed 's/ /-/g' |
-        sed -E 's@(.+)@(#\1)@g' |
-        iconv -f utf8 -t ascii//TRANSLIT//IGNORE
+        sed -E 's@(.+)@(#\1)@g'
     )
 }
 
