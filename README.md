@@ -43,6 +43,7 @@ go-run                 Run go app
 go-tests               Run go tests
 help                   Display this help screen
 links-check            Check links
+links-mirror           Mirror links
 lua-check              Check format lua code
 lua-fmt                Format Lua code
 makefile-descriptions  Check if all Makefile rules have descriptions

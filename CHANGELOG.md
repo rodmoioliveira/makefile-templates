@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.7.0](https://github.com/rodmoioliveira/makefile-templates/compare/0.6.1...0.7.0) - 2025-01-19
+
+[b89f576](https://github.com/rodmoioliveira/makefile-templates/commit/b89f57692b2b38ce58fadbe4554c55ab8eacd062)...[46f9f90](https://github.com/rodmoioliveira/makefile-templates/commit/46f9f90518f63c3552233c3bbcb0e00def1a59a4)
+
+### Bug Fixes
+
+- [e23fa07](https://github.com/rodmoioliveira/makefile-templates/commit/e23fa0745c3ecf0603765d7963b83064f12fd143) - Revert remove diacritics from index
+
+### CI
+
+- [46f9f90](https://github.com/rodmoioliveira/makefile-templates/commit/46f9f90518f63c3552233c3bbcb0e00def1a59a4) - Add dprint step
+
 ## [0.6.1](https://github.com/rodmoioliveira/makefile-templates/compare/0.6.0...0.6.1) - 2025-01-16
 
 [1b64336](https://github.com/rodmoioliveira/makefile-templates/commit/1b6433673c8bde32d73ce0309e1ed6f8ebc8fba0)...[b89f576](https://github.com/rodmoioliveira/makefile-templates/commit/b89f57692b2b38ce58fadbe4554c55ab8eacd062)

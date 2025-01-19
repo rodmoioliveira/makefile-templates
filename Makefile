@@ -69,7 +69,7 @@ go-tests: ## Run go tests
 links-check: ## Check links
 	@./dev/links-check.sh
 
-links-mirror: ## Check links
+links-mirror: ## Mirror links
 	@./dev/links-mirror.sh
 
 lua-check: ## Check format lua code
