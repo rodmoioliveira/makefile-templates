@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.8.0](https://github.com/rodmoioliveira/makefile-templates/compare/0.7.0...0.8.0) - 2025-01-19
+
+[46f9f90](https://github.com/rodmoioliveira/makefile-templates/commit/46f9f90518f63c3552233c3bbcb0e00def1a59a4)...[b07f8d1](https://github.com/rodmoioliveira/makefile-templates/commit/b07f8d187a516d7f30d20b90a245d99628e0df3e)
+
+### Miscellaneous Tasks
+
+- [b07f8d1](https://github.com/rodmoioliveira/makefile-templates/commit/b07f8d187a516d7f30d20b90a245d99628e0df3e) - Add stylua and golangci
+
 ## [0.7.0](https://github.com/rodmoioliveira/makefile-templates/compare/0.6.1...0.7.0) - 2025-01-19
 
 [b89f576](https://github.com/rodmoioliveira/makefile-templates/commit/b89f57692b2b38ce58fadbe4554c55ab8eacd062)...[46f9f90](https://github.com/rodmoioliveira/makefile-templates/commit/46f9f90518f63c3552233c3bbcb0e00def1a59a4)
