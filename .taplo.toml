@@ -1,5 +1,0 @@
-[formatting]
-    indent_entries = true
-    indent_string = "    "
-
-    exclude = []

@@ -2,13 +2,13 @@
 
 help: ## Display this help screen
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
-		awk 'BEGIN {FS = ":.*?## "}; \
-		{printf "%-25s %s\n", $$1, $$2}' | \
-		LC_ALL=C sort
+		sed -E 's/:.+## /@/g' | \
+		LC_ALL=C sort -t@ -k1,1 | \
+		column -s@ -t
 
 bash-all: bash-fmt bash-check bash-lint ## Run all bash tests
 
-bash-check: ## Check bash code
+bash-check: ## Check format bash code
 	@find . -type f -name "*.sh" | xargs shfmt -i 2 -d
 
 bash-deps: ## Install bash dependencies
@@ -17,17 +17,23 @@ bash-deps: ## Install bash dependencies
 bash-fmt: ## Format bash code
 	@find . -type f -name "*.sh" | xargs shfmt -i 2 -w
 
-bash-lint: ## Lint bash code
+bash-lint: ## Check lint bash code
 	@find . -type f -name "*.sh" | xargs shellcheck -o all
 
-check-links: ## Check if links are not dead
-	@./dev/check-links.sh
+comments-tidy: ## Tidy comments within code
+	@./dev/comments-tidy.sh
 
-doc-changelog: ## Autogenerate CHANGELOG.md
-	@git-cliff --config cliff.toml --output CHANGELOG.md
+doc-changelog: ## Write CHANGELOG.md
+	@git cliff -o CHANGELOG.md
 
 doc-readme: ## Write README.md
 	@./dev/doc-readme.sh
+
+dprint-check: ## Dprint check
+	@dprint check
+
+dprint-fmt: ## Dprint format
+	@dprint fmt
 
 go-audit: ## Audit go vulnerabilities
 	@govulncheck ./...
@@ -60,101 +66,78 @@ go-run: ## Run go app
 go-tests: ## Run go tests
 	@go test ./... -v
 
-js-fmt: ## Format javascript code
-	@npx @biomejs/biome format .
+links-check: ## Check links
+	@./dev/links-check.sh
 
-js-fmt-fix: ## Format fix javascript code
-	@npx @biomejs/biome format --write .
+links-mirror: ## Check links
+	@./dev/links-mirror.sh
 
-js-lint: ## Lint javascript code
-	@npx @biomejs/biome lint .
+lua-check: ## Check format lua code
+	@find . -name "*.lua" | xargs stylua -c
 
-js-lint-fix: ## Fix lint javascript code
-	@npx @biomejs/biome lint --apply .
+lua-fmt: ## Format Lua code
+	@find . -name "*.lua" | xargs stylua
 
-py-dev: ## Check python code in watch mode
-	@ruff check --watch
+makefile-descriptions: ## Check if all Makefile rules have descriptions
+	@./dev/makefile-descriptions.sh
 
-py-fmt: ## Format python code
-	@ruff format --check --diff --verbose
-
-py-fmt-fix: ## Format fix python code
-	@ruff format
-
-py-lint: ## Lint python code
-	@ruff check --show-fixes --verbose
-
-py-lint-fix: ## Fix lint python code
-	@ruff check --fix
-
-rs-audit: ## Audit rust vulnerabilities
+rs-audit: ## Audit Cargo.lock
 	@cargo audit
 
-rs-audit-fix: ## Fix rust vulnerabilities
+rs-audit-fix: ## Update Cargo.toml to fix vulnerable dependency requirement
 	@cargo audit fix
 
-rs-bin-deps: ## Install cargo dependencies
+rs-build: ## Build binary
+	@cargo build --release --locked --frozen --bins
+
+rs-cargo-deps: ## Install cargo dependencies
 	@cargo install --locked cargo-outdated
 	@cargo install cargo-audit --features=fix
-	@cargo install cargo-udeps --locked
 	@cargo install cargo-watch
-	@cargo install eza
-	@cargo install bat
-	@cargo install ripgrep
-	@cargo install sd
 	@cargo install typos-cli
 	@rustup component add clippy
 
-rs-build: ## Build rust binary
-	@cargo build --release --locked --frozen --bins
-
-rs-check: ## Check rust code
+rs-check: ## Run check
 	@cargo check
 
-rs-dev: ## Check rust code in watch mode
+rs-dev: ## Run check in watch mode
 	@cargo watch -c
 
-	rs-doc: ## Open rust binary documentation
+rs-doc: ## Open app documentation
 	@cargo doc --open
 
 rs-fix: ## Fix rust code
 	@cargo fix --allow-dirty --allow-staged --all-features --all-targets
 
-rs-fmt: ## Check format of rust code
+rs-fmt: ## Format rust code
 	@cargo fmt --all --check
 
-rs-fmt-fix: ## Format rust code
+rs-fmt-fix: ## Format fix rust code
 	@cargo fmt --all
 
-rs-install: ## Install rust binary
+rs-install: ## Install binary
 	@cargo install --path .
 
 rs-lint: ## Lint rust code
 	@cargo clippy --workspace --all-targets --all-features --no-deps -- -D warnings
 
-rs-lint-fix: ## Fix linting issues in rust code
+rs-lint-fix: ## Fix lint rust code
 	@cargo clippy --workspace --all-targets --all-features --no-deps --allow-dirty --allow-staged --fix -- -D warnings
 
-rs-outdated: ## Display when rust dependencies are out of date
+rs-outdated: ## Display when dependencies are out of date
 	@cargo outdated -wR
 
-rs-tests: ## Run rust tests
-	@cargo test --lib
+rs-tests: ## Run tests
+	@cargo test
 
-rs-uninstall: ## Uninstall rust binary
+rs-uninstall: ## Uninstall binary
 	@cargo uninstall
 
-rs-update: ## Update rust dependencies
+rs-update-cargo: ## Update dependencies
 	@cargo update
 
-rs-update-rustup: ## Update rustup
+rs-update-rustup: ## Update rust
 	@rustup update
-
-toml-fmt: ## Format toml code
-	@find . -type f -regex ".*.toml" | xargs taplo format
-
-toml-lint: ## Check toml yaml code
-	@find . -type f -regex ".*.toml" | xargs taplo lint
 
 typos: ## Check typos
 	@typos
@@ -162,34 +145,35 @@ typos: ## Check typos
 typos-fix: ## Fix typos
 	@typos -w
 
-yaml-fmt: ## Format yaml code
-	@find . -type f -regex ".*.ya?ml" | xargs yamlfmt
-
-yaml-lint: ## Check lint yaml code
-	@find . -type f -regex ".*.ya?ml" | xargs yamllint
-
-.PHONY: help
 .PHONY: bash-all
 .PHONY: bash-check
 .PHONY: bash-deps
 .PHONY: bash-fmt
 .PHONY: bash-lint
-.PHONY: check-links
+.PHONY: comments-tidy
 .PHONY: doc-changelog
 .PHONY: doc-readme
-.PHONY: js-fmt
-.PHONY: js-fmt-fix
-.PHONY: js-lint
-.PHONY: js-lint-fix
-.PHONY: py-dev
-.PHONY: py-fmt
-.PHONY: py-fmt-fix
-.PHONY: py-lint
-.PHONY: py-lint-fix
+.PHONY: dprint-check
+.PHONY: dprint-fmt
+.PHONY: go-audit
+.PHONY: go-build
+.PHONY: go-deps
+.PHONY: go-fmt
+.PHONY: go-lint
+.PHONY: go-lint-fix
+.PHONY: go-outdated
+.PHONY: go-run
+.PHONY: go-tests
+.PHONY: help
+.PHONY: links-check
+.PHONY: links-mirror
+.PHONY: lua-check
+.PHONY: lua-fmt
+.PHONY: makefile-descriptions
 .PHONY: rs-audit
 .PHONY: rs-audit-fix
-.PHONY: rs-bin-deps
 .PHONY: rs-build
+.PHONY: rs-cargo-deps
 .PHONY: rs-check
 .PHONY: rs-dev
 .PHONY: rs-doc
@@ -202,11 +186,7 @@ yaml-lint: ## Check lint yaml code
 .PHONY: rs-outdated
 .PHONY: rs-tests
 .PHONY: rs-uninstall
-.PHONY: rs-update
+.PHONY: rs-update-cargo
 .PHONY: rs-update-rustup
-.PHONY: toml-fmt
-.PHONY: toml-lint
 .PHONY: typos
 .PHONY: typos-fix
-.PHONY: yaml-fmt
-.PHONY: yaml-lint
