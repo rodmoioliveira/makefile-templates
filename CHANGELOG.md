@@ -89,5 +89,3 @@
 ### Features
 
 - [006a23e](https://github.com/rodmoioliveira/makefile-templates/commit/006a23eda739a65da070618d636bbc42f3a7c861) - Add bash template
-
-

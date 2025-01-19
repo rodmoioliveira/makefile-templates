@@ -48,21 +48,25 @@ $(index)
 
 # Dependencies
 
-- [biome](https://biomejs.dev/)
-- [ruff](https://docs.astral.sh/ruff/)
-- [taplo](https://github.com/tamasfe/taplo)
-- [yamlfmt](https://github.com/google/yamlfmt)
-- [yamllint](https://github.com/adrienverge/yamllint)
+- [dprint](https://dprint.dev/)
+- [lychee](https://lychee.cli.rs/)
+- [shellcheck](https://www.shellcheck.net/)
+- [shfmt](https://github.com/mvdan/sh)
 
 # Make Recipes
 
 \`\`\`
 $(make help)
 \`\`\`
+
+# How to Release
+
+$(cat HOW_TO_RELEASE.md)
 EOF
 
   sed -i -E '/^make\[[0-9]/d' README.md
   backlink
+  dprint fmt README.md CHANGELOG.md
 }
 
 trap readme EXIT
