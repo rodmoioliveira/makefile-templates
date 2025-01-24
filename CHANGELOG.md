@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.9.0](https://github.com/rodmoioliveira/makefile-templates/compare/0.8.0...0.9.0) - 2025-01-20
+
+[b07f8d1](https://github.com/rodmoioliveira/makefile-templates/commit/b07f8d187a516d7f30d20b90a245d99628e0df3e)...[be6f83b](https://github.com/rodmoioliveira/makefile-templates/commit/be6f83b0d98b11076ea4788d67199786886725f1)
+
+### Miscellaneous Tasks
+
+- [be6f83b](https://github.com/rodmoioliveira/makefile-templates/commit/be6f83b0d98b11076ea4788d67199786886725f1) - Rename HOW_TO_RELEASE to RELEASE
+
 ## [0.8.0](https://github.com/rodmoioliveira/makefile-templates/compare/0.7.0...0.8.0) - 2025-01-19
 
 [46f9f90](https://github.com/rodmoioliveira/makefile-templates/commit/46f9f90518f63c3552233c3bbcb0e00def1a59a4)...[b07f8d1](https://github.com/rodmoioliveira/makefile-templates/commit/b07f8d187a516d7f30d20b90a245d99628e0df3e)
