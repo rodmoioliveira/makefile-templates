@@ -1,5 +1,9 @@
 # Changelog
 
+## [unreleased]
+
+- [8315d3c](https://git.sr.ht/~rodmoi/makefile-templates/commit/8315d3cce6f17bc6982d89c74fe4b95d814e2e71) - **Releases:** 0.10.0
+
 ## [0.10.0](https://git.sr.ht/~rodmoi/makefile-templates/refs/0.10.0) - 2025-12-11
 
 - [87c3512](https://git.sr.ht/~rodmoi/makefile-templates/commit/87c351232f1fa10752c0075b292c2d66e2488bf0) - **CI:** Remove webi.sh
