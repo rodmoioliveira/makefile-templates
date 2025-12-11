@@ -2,6 +2,11 @@
 
 A collection of my commonly used makefile recipes.
 
+[![builds.sr.ht status](https://builds.sr.ht/~rodmoi.svg)](https://builds.sr.ht/~rodmoi?)
+
+> [!IMPORTANT]
+> This repo was [moved](https://git.sr.ht/~rodmoi/neovim) to [sourcehut](https://sr.ht/)!
+
 # index
 
 - [Dependencies](#dependencies)
