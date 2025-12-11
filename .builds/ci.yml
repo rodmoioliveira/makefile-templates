@@ -1,0 +1,44 @@
+image: debian/stable
+packages:
+  - tar
+  - unzip
+  - wget
+sources:
+  - https://git.sr.ht/~rodmoi/makefile-templates
+tasks:
+  - makefile-descriptions: |
+      cd makefile-templates
+      make makefile-descriptions
+  - bash-check: |
+      cd makefile-templates
+      sudo apt install shfmt -y
+      make bash-check
+  - bash-lint: |
+      cd makefile-templates
+      sudo apt install shellcheck -y
+      make bash-lint
+  - dprint-check: |
+      cd makefile-templates
+      curl -fsSL https://dprint.dev/install.sh | sh
+      git ls-files | xargs $HOME/.dprint/bin/dprint check
+  - typos: |
+      cd makefile-templates
+      wget -qO- https://github.com/crate-ci/typos/releases/download/v1.40.0/typos-v1.40.0-x86_64-unknown-linux-musl.tar.gz |
+        tar xzfv - ./typos
+      ./typos --config _typos.toml
+  - links-check: |
+      cd makefile-templates
+      wget -qO- https://github.com/lycheeverse/lychee/releases/latest/download/lychee-x86_64-unknown-linux-musl.tar.gz |
+        tar xzfv - lychee
+      if ! ./lychee \
+        --base-url 'https://git.sr.ht/~rodmoi/makefile-templates' \
+        --exclude '(linkedin|substack|makefile-templates)' \
+        --exclude-path CHANGELOG.md \
+        --no-progress \
+        --timeout 3 \
+        --verbose \
+        './**/*.md'; then
+        echo error
+      else
+        echo ok
+      fi
